@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energy Anomaly Detection</title>
+  
+
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <!-- GitHub Navbar -->
+    <nav class="navbar">
+      <a href="https://github.com/DhruvSharma-05/Energy-Anomaly-Detector" target="_blank" title="View on GitHub">
+        <!-- Inline GitHub SVG Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="github-logo" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 
+            0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 
+            1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 
+            0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.22 2.2.82.64-.18 
+            1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 
+            1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 
+            1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+      </a>
+    </nav>
+
+    <h1>Energy Anomaly Detection Dashboard</h1>
+    <p>Power Plant Analysis and Prediction System</p>
+    
+  </header>
+  
+  <div class="container">
+    <div class="dashboard-grid">
+      <div class="card animated">
+        <div class="card-header">
+          <a href="https://archive.ics.uci.edu/dataset/294/combined+cycle+power+plant"><h2 class="card-title">Dataset Overview</h2></a>
+          <div class="card-icon">D</div>
+        </div>
+        <p>Combined Cycle Power Plant (CCPP) dataset containing:</p>
+        <ul style="margin-top: 1rem; margin-left: 1.5rem;">
+          <li>47,840 data points</li>
+          <li>4 input features</li>
+          <li>1 target variable (PE)</li>
+        </ul>
+        <div style="margin-top: 1rem;">
+          <strong>Features:</strong>
+          <ul style="margin-left: 1.5rem;">
+            <li>AT: Ambient Temperature (°C)</li>
+            <li>V: Vacuum (cm Hg)</li>
+            <li>AP: Atmospheric Pressure (mbar)</li>
+            <li>RH: Relative Humidity (%)</li>
+          </ul>
+        </div>
+        <div style="margin-top: 1rem;">
+          <strong>Target:</strong>
+          <ul style="margin-left: 1.5rem;">
+            <li>PE: Electrical Output (MW)</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="card animated delay-1">
+        <div class="card-header">
+          <h2 class="card-title">Data Distribution</h2>
+          <div class="card-icon">S</div>
+        </div>
+        <table>
+          <tr>
+            <th>Statistic</th>
+            <th>AT (°C)</th>
+            <th>V (cm Hg)</th>
+            <th>AP (mbar)</th>
+            <th>RH (%)</th>
+            <th>PE (MW)</th>
+          </tr>
+          <tr>
+            <td>Mean</td>
+            <td>19.65</td>
+            <td>54.31</td>
+            <td>1013.26</td>
+            <td>73.31</td>
+            <td>454.37</td>
+          </tr>
+          <tr>
+            <td>Std</td>
+            <td>7.45</td>
+            <td>12.71</td>
+            <td>5.94</td>
+            <td>14.60</td>
+            <td>17.07</td>
+          </tr>
+          <tr>
+            <td>Min</td>
+            <td>1.81</td>
+            <td>25.36</td>
+            <td>992.89</td>
+            <td>25.56</td>
+            <td>420.26</td>
+          </tr>
+          <tr>
+            <td>Max</td>
+            <td>37.11</td>
+            <td>81.56</td>
+            <td>1033.30</td>
+            <td>100.16</td>
+            <td>495.76</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    
+    <div class="metrics animated delay-2">
+      <h2>Model Performance Metrics</h2>
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <h3>Linear Regression</h3>
+          <div class="metric-value">4.52</div>
+          <div>RMSE</div>
+        </div>
+        <div class="metric-card">
+          <h3>Bagging + REPTree</h3>
+          <div class="metric-value">0.87</div>
+          <div>RMSE</div>
+        </div>
+        <div class="metric-card">
+          <h3>XGBoost</h3>
+          <div class="metric-value">2.75</div>
+          <div>RMSE</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="model-comparison animated delay-3">
+      <h2>Model Comparison</h2>
+      <table>
+        <tr>
+          <th>Model</th>
+          <th>MAE</th>
+          <th>RMSE</th>
+          <th>Performance</th>
+        </tr>
+        <tr>
+          <td>Linear Regression</td>
+          <td>3.62</td>
+          <td>4.52</td>
+          <td>
+            <div style="width: 100%; background-color: #eee; height: 20px; border-radius: 10px; overflow: hidden;">
+              <div style="width: 19%; background: linear-gradient(90deg, #3498db, #2980b9); height: 20px;"></div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Bagging + REPTree</td>
+          <td>0.39</td>
+          <td>0.87</td>
+          <td>
+            <div style="width: 100%; background-color: #eee; height: 20px; border-radius: 10px; overflow: hidden;">
+              <div style="width: 100%; background: linear-gradient(90deg, #2ecc71, #27ae60); height: 20px;"></div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>XGBoost</td>
+          <td>2.05</td>
+          <td>2.75</td>
+          <td>
+            <div style="width: 100%; background-color: #eee; height: 20px; border-radius: 10px; overflow: hidden;">
+              <div style="width: 32%; background: linear-gradient(90deg, #f39c12, #d35400); height: 20px;"></div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="chart-container animated">
+      <h2>Actual vs Predicted (Bagging + REPTree)</h2>
+      <div class="chart-canvas">
+        <!-- You can use an image or a canvas element -->
+        <img src="AP.png" alt="Actual vs Predicted Visualization">
+        <!-- <canvas id="actual-vs-predicted"></canvas> -->
+      </div>
+    </div>
+    
+    <div class="shap-container animated delay-1">
+      <h2>Feature Importance (SHAP Values)</h2>
+      <p>Impact of each feature on model predictions</p>
+      
+      <div id="shap-chart">
+        <img src="shap.png" alt="SHAP Visualization">
+      </div>
+      <!-- Feature Importance Bars -->
+      <div class="feature-importance">
+        <div class="feature-name">AT</div>
+        <div class="feature-bar-container">
+          <div class="feature-bar" style="width: 85%;"></div>
+        </div>
+        <div class="feature-value">0.85 (85%)</div>
+      </div>
+      <div class="feature-importance">
+        <div class="feature-name">V</div>
+        <div class="feature-bar-container">
+          <div class="feature-bar" style="width: 65%;"></div>
+        </div>
+        <div class="feature-value">0.65 (65%)</div>
+      </div>
+      <div class="feature-importance">
+        <div class="feature-name">AP</div>
+        <div class="feature-bar-container">
+          <div class="feature-bar" style="width: 40%;"></div>
+        </div>
+        <div class="feature-value">0.40 (40%)</div>
+      </div>
+      <div class="feature-importance">
+        <div class="feature-name">RH</div>
+        <div class="feature-bar-container">
+          <div class="feature-bar" style="width: 25%;"></div>
+        </div>
+        <div class="feature-value">0.25 (25%)</div>
+      </div>
+    </div>
+    
+    <div class="anomaly-section animated delay-2">
+      <h2>Anomaly Detection Results</h2>
+      <p>Anomalies detected using different methods</p>
+      
+      <div class="anomaly-count">
+        <div class="anomaly-badge z-score">Z-Score: 477</div>
+        <div class="anomaly-badge iqr">IQR: 5,582</div>
+        <div class="anomaly-badge iso">Isolation Forest: 192</div>
+      </div>
+      
+      <div class="anomaly-table">
+        <table>
+          <tr>
+            <th>AT</th>
+            <th>V</th>
+            <th>AP</th>
+            <th>RH</th>
+            <th>PE</th>
+            <th>Residual</th>
+            <th>Method</th>
+          </tr>
+          <tr class="anomaly-row">
+            <td>13.45</td>
+            <td>42.44</td>
+            <td>1012.79</td>
+            <td>83.12</td>
+            <td>473.96</td>
+            <td>1.741</td>
+            <td>IQR</td>
+          </tr>
+          <tr class="anomaly-row">
+            <td>23.09</td>
+            <td>69.13</td>
+            <td>1010.93</td>
+            <td>90.07</td>
+            <td>436.67</td>
+            <td>-0.382</td>
+            <td>IQR</td>
+          </tr>
+          <tr class="anomaly-row">
+            <td>26.23</td>
+            <td>63.56</td>
+            <td>1013.57</td>
+            <td>65.81</td>
+            <td>440.80</td>
+            <td>-0.594</td>
+            <td>IQR</td>
+          </tr>
+          <tr class="anomaly-row">
+            <td>24.53</td>
+            <td>74.78</td>
+            <td>1009.90</td>
+            <td>78.34</td>
+            <td>446.30</td>
+            <td>1.612</td>
+            <td>IQR</td>
+          </tr>
+          <tr class="anomaly-row">
+            <td>29.23</td>
+            <td>68.14</td>
+            <td>1004.31</td>
+            <td>81.46</td>
+            <td>428.87</td>
+            <td>-0.721</td>
+            <td>IQR, ISO</td>
+          </tr>
+          <tr class="anomaly-row">
+            <td>17.66</td>
+            <td>62.10</td>
+            <td>1019.49</td>
+            <td>86.30</td>
+            <td>452.03</td>
+            <td>-0.713</td>
+            <td>IQR</td>
+          </tr>
+          <tr class="anomaly-row">
+            <td>26.80</td>
+            <td>72.58</td>
+            <td>1009.22</td>
+            <td>89.03</td>
+            <td>431.18</td>
+            <td>0.713</td>
+            <td>IQR, Z-Score</td>
+          </tr>
+          <tr class="anomaly-row">
+            <td>18.68</td>
+            <td>53.29</td>
+            <td>1018.16</td>
+            <td>75.01</td>
+            <td>459.89</td>
+            <td>0.398</td>
+            <td>IQR</td>
+          </tr>
+          <tr class="anomaly-row">
+            <td>13.76</td>
+            <td>45.87</td>
+            <td>1008.89</td>
+            <td>87.27</td>
+            <td>463.50</td>
+            <td>-1.003</td>
+            <td>IQR</td>
+          </tr>
+        </table>
+      </div>
+      <!-- Anomaly Dataset Information -->
+      <p class="anomaly-info">5728 rows x 9 columns, and the results are a sample of them.</p>
+    </div>
+  </div>
+  
+  <footer>
+    <div class="footer-container">
+      <p>
+        Made</span> by Dhruv Sharma. Connect with me:
+      </p>
+      <div class="social-links">
+        <a href="https://x.com/drvium" target="_blank">Twitter</a>
+        <a href="https://www.linkedin.com/in/dhruvsharma05/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/DhruvSharma-05" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </footer>
+  
+
+</body>
+</html>
